@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Button, Stack, Typography } from "@mui/material";
-
 import axios from "axios";
 
 export default function UserDetail() {
@@ -27,48 +26,37 @@ export default function UserDetail() {
 
   return (
     <Box>
-      <Typography variant="h4" gutterBottom>
-        Chi tiết người dùng
-      </Typography>
+      <Typography variant="h4" gutterBottom>Chi tiết người dùng</Typography>
 
-      <Stack
-        spacing={1}
-        sx={{
-          p: 2,
-          border: "1px solid #ddd",
-          mb: 3,
-        }}
-      >
+      <Stack spacing={1}>
         <Typography>Họ tên: {user.firstName} {user.lastName}</Typography>
-
         <Typography>Email: {user.email}</Typography>
-
         <Typography>Số điện thoại: {user.phone}</Typography>
       </Stack>
 
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{ mt: 2 }}>
         Công việc của người dùng
       </Typography>
 
       <Stack spacing={1}>
         {works.map((work) => (
-          <Box
-            key={work.id}
-            sx={{
-              p: 2,
-              border: "1px solid #ddd",
-            }}
-          >
+          <Box key={work.id}>
             <Typography>{work.todo}</Typography>
 
-            <Typography color="text.secondary">
+            <Typography>
               {work.completed ? "Đã hoàn thành" : "Chưa hoàn thành"}
             </Typography>
           </Box>
         ))}
       </Stack>
 
-      <Button sx={{ mt: 3 }} variant="contained" onClick={() => navigate("/nguoi-dung")}>Quay lại</Button>
+      <Button
+        variant="contained"
+        sx={{ mt: 2 }}
+        onClick={() => navigate("/nguoi-dung")}
+      >
+        Quay lại
+      </Button>
     </Box>
   );
 }
